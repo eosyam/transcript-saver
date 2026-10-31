@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Transcript Saver: Export Teams Recording Transcripts (TXT, Word, SRT)"
+  },
+  "extDescription": {
+    "message": "Save Microsoft Teams & Stream recording transcripts as TXT, Word or SRT in one click. Runs fully in your browser, nothing uploaded."
+  }
+}

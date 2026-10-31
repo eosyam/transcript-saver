@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Transcript Saver：Teams 録画の文字起こしを保存（TXT・Word・SRT）"
+  },
+  "extDescription": {
+    "message": "Microsoft Teams・Stream の録画の文字起こしを、ワンクリックで TXT・Word・SRT に保存。処理はすべてブラウザ内で行い、外部に送信しません。"
+  }
+}

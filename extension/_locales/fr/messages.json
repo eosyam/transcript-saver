@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Transcript Saver : exporter les transcriptions Teams (TXT, Word, SRT)"
+  },
+  "extDescription": {
+    "message": "Enregistrez les transcriptions de vos enregistrements Microsoft Teams et Stream en TXT, Word ou SRT, en un clic. Rien n'est envoyé."
+  }
+}

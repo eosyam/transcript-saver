@@ -97,7 +97,7 @@
       <ul>
         <li>It does not transmit transcript text, page content or any other data to the developer or to any third party.</li>
         <li>It does not use analytics, cookies, advertising or tracking of any kind.</li>
-        <li>It does not store data in browser storage, sync storage or on any server.</li>
+        <li>It does not store transcript text or any personal data in browser storage, sync storage or on any server. From version 0.3.3 it keeps one local flag in the extension's own storage so that the one-time "rate this extension" reminder is shown only once.</li>
         <li>It does not download or run remote code.</li>
         <li>It does not read pages other than recording player pages, and it does not read anything until you click a button.</li>
       </ul>
@@ -110,7 +110,7 @@
 
     <div class="item">
       <h3>Permissions</h3>
-      <p>The extension runs on <code>https://*.sharepoint.com/*</code> pages, where Microsoft Stream recordings are played. It shows its toolbar only on recording player pages (<code>stream.aspx</code>). It requests no other permissions.</p>
+      <p>The extension runs on <code>https://*.sharepoint.com/*</code> pages, where Microsoft Stream recordings are played. It shows its toolbar only on recording player pages (<code>stream.aspx</code>). Apart from <code>storage</code>, which is used only for the one flag described above, it requests no other permissions.</p>
     </div>
 
     <div class="item">
@@ -178,7 +178,7 @@
       <ul>
         <li>Transkript metnini, sayfa içeriğini veya başka herhangi bir veriyi geliştiriciye ya da üçüncü taraflara göndermez.</li>
         <li>Analitik, çerez, reklam veya herhangi bir takip kullanmaz.</li>
-        <li>Tarayıcı depolamasına, senkronizasyon depolamasına ya da bir sunucuya veri kaydetmez.</li>
+        <li>Transkript metnini veya herhangi bir kişisel veriyi tarayıcı depolamasına, senkronizasyon depolamasına ya da bir sunucuya kaydetmez. 0.3.3 sürümünden itibaren, "eklentiyi puanla" hatırlatmasının yalnızca bir kez gösterilmesi için eklentinin kendi depolamasında tek bir yerel bayrak tutar.</li>
         <li>Uzaktan kod indirmez veya çalıştırmaz.</li>
         <li>Kayıt oynatıcısı dışındaki sayfaları okumaz; bir butona basılana kadar hiçbir şey okumaz.</li>
       </ul>
@@ -191,7 +191,7 @@
 
     <div class="item">
       <h3>İzinler</h3>
-      <p>Eklenti, Microsoft Stream kayıtlarının oynatıldığı <code>https://*.sharepoint.com/*</code> sayfalarında çalışır. Araç çubuğunu yalnızca kayıt oynatıcısı sayfalarında (<code>stream.aspx</code>) gösterir. Başka bir izin istemez.</p>
+      <p>Eklenti, Microsoft Stream kayıtlarının oynatıldığı <code>https://*.sharepoint.com/*</code> sayfalarında çalışır. Araç çubuğunu yalnızca kayıt oynatıcısı sayfalarında (<code>stream.aspx</code>) gösterir. Yukarıda anlatılan tek bayrak için kullanılan <code>storage</code> dışında başka bir izin istemez.</p>
     </div>
 
     <div class="item">
