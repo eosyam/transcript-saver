@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to download a Microsoft Teams transcript (DOCX, VTT, TXT, SRT) · Transcript Saver</title>
+<meta name="description" content="Step-by-step guide to downloading a Microsoft Teams meeting transcript: from the Recap tab, from the Stream / SharePoint recording page, and with the Transcript Saver extension as TXT, Word or SRT.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eosyam.github.io/transcript-saver/how-to-download-teams-transcript/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to download a Microsoft Teams transcript",
+  "description": "Download a Teams meeting transcript from the Recap tab, or save it from the Stream / SharePoint recording page with the Transcript Saver extension.",
+  "step": [
+    { "@type": "HowToStep", "name": "Open the meeting recap", "text": "In Teams, open Chat, select the past meeting chat and open the Recap tab." },
+    { "@type": "HowToStep", "name": "Open the Transcript tab", "text": "Select Transcript inside Recap to read the full transcript." },
+    { "@type": "HowToStep", "name": "Download", "text": "Open the Download dropdown and choose .docx or .vtt." },
+    { "@type": "HowToStep", "name": "If Download is missing, use the recording page", "text": "Open the recording in the Stream / SharePoint player, open the transcript panel and use Transcript Saver to save TXT, Word or SRT." }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --fg: #1d1e2c; --muted: #5c5f78; --line: #dfe0ec;
+    --accent: #4f52b2; --ok: #15803d; --ok-bg: #e8f5ec; --warn: #92400e; --warn-bg: #fdf3e3;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14151f; --surface: #1c1d2a; --fg: #e8e9f3; --muted: #a2a5bf; --line: #2e3044;
+      --accent: #9da0f0; --ok: #6fd394; --ok-bg: #16281e; --warn: #f0b866; --warn-bg: #2a2214; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.65 var(--font-body); padding: 40px 16px 64px; }
+  .wrap { max-width: 44rem; margin: 0 auto; display: grid; gap: 28px; }
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.25rem); line-height: 1.2; margin: 0; font-weight: 650; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
+  nav a { font: 500 13px/1 var(--font-mono); color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; background: var(--surface); }
+  nav a:hover, nav a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+  .glance { background: var(--ok-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+  .glance h2 { font-size: 15px; margin: 0; color: var(--ok); font-weight: 600; }
+  .note { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 15px; }
+  .note strong { color: var(--warn); }
+  ul, ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  section { display: grid; gap: 22px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 36px; }
+  h2.part { font-size: 1.35rem; margin: 0; font-weight: 600; }
+  .item { display: grid; gap: 8px; }
+  .item h3 { font-size: 1.05rem; margin: 0; font-weight: 600; }
+  .item p { margin: 0; }
+  .muted { color: var(--muted); }
+  code, kbd { font: 400 0.88em var(--font-mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Transcript Saver · Guide</div>
+    <h1>How to download a Microsoft Teams transcript</h1>
+    <p class="meta">Updated 31 October 2026 · Works for TXT, Word (.docx), SubRip (.srt) and WebVTT (.vtt)</p>
+    <nav aria-label="Language"><a href="#en">English</a><a href="#tr">Türkçe</a></nav>
+  </header>
+
+  <section id="en" lang="en">
+    <div class="glance">
+      <h2>In short</h2>
+      <ul>
+        <li>Transcription must have been turned on during the meeting, otherwise there is nothing to download.</li>
+        <li>Fastest route: Teams → Chat → the past meeting → Recap → Transcript → Download → <code>.docx</code> or <code>.vtt</code>.</li>
+        <li>If you can read the transcript but Download is missing, open the recording page and use Transcript Saver to save TXT, Word or SRT.</li>
+      </ul>
+    </div>
+
+    <h2 class="part">Method 1 · Download from the Recap tab</h2>
+    <div class="item">
+      <ol>
+        <li>Open Microsoft Teams and select <strong>Chat</strong> (or <strong>Calendar</strong>).</li>
+        <li>Open the chat or calendar event of the past meeting.</li>
+        <li>Select the <strong>Recap</strong> tab, then <strong>Transcript</strong>.</li>
+        <li>Open the arrow next to <strong>Download</strong> and choose <code>.docx</code> or <code>.vtt</code>.</li>
+      </ol>
+      <p class="muted">On mobile: Chat → the past meeting chat → Recordings → Download transcripts.</p>
+    </div>
+
+    <div class="note">
+      <strong>Don't see Download?</strong> By default the organizer and co-organizers can download the transcript. Other people in the organization can often read it but not download it, and external guests usually have no access. Your organizer and IT admin decide this. If the Recap tab is empty, wait a few minutes after the meeting ends.
+    </div>
+
+    <h2 class="part">Method 2 · Save it from the recording page with Transcript Saver</h2>
+    <div class="item">
+      <p>When you open a meeting recording in the Microsoft Stream / SharePoint player, the transcript is shown in a panel next to the video. Transcript Saver adds a small toolbar to that page and turns what the panel shows into a file.</p>
+      <ol>
+        <li>Install <strong>Transcript Saver</strong> from the Chrome Web Store or Microsoft Edge Add-ons.</li>
+        <li>Open the meeting recording (from Recap, the chat, or a shared link). The address looks like <code>…sharepoint.com/…/stream.aspx</code>.</li>
+        <li>Open the <strong>Transcript</strong> panel next to the video.</li>
+        <li>Click <strong>TXT</strong>, <strong>Word</strong>, <strong>SRT</strong> or <strong>Copy</strong> in the toolbar. The extension scrolls the panel, reads the text and saves the file to your normal download folder.</li>
+      </ol>
+      <p class="muted">The extension reads the page only when you click a button, keeps nothing after you leave the page, and sends nothing anywhere. See the <a href="../">privacy policy</a>.</p>
+    </div>
+
+    <h2 class="part">Which format should I pick?</h2>
+    <div class="item">
+      <table>
+        <thead><tr><th>Format</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><code>.docx</code> / Word</td><td>Reading, editing, sharing meeting notes</td></tr>
+          <tr><td><code>.txt</code></td><td>Pasting into an AI assistant, notes apps or search</td></tr>
+          <tr><td><code>.srt</code></td><td>Subtitles for the recording in common video tools</td></tr>
+          <tr><td><code>.vtt</code></td><td>Web video captions; timestamps and speaker labels</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="part">Troubleshooting</h2>
+    <div class="item">
+      <ul>
+        <li><strong>No transcript at all:</strong> transcription was not started in the meeting. It cannot be created afterwards from Teams itself.</li>
+        <li><strong>Toolbar not visible:</strong> it appears only on recording player pages (<code>stream.aspx</code>), not in the Teams chat window. Open the recording from Recap and reload the page.</li>
+        <li><strong>File is shorter than expected:</strong> keep the transcript panel open and let the extension finish scrolling before you switch tabs.</li>
+        <li><strong>Sensitive meeting:</strong> follow your organization's rules on sharing transcripts and recordings.</li>
+      </ul>
+    </div>
+
+    <p class="muted">Transcript Saver is an independent tool. It is not affiliated with, sponsored or endorsed by Microsoft. Microsoft, Teams, SharePoint and Stream are trademarks of the Microsoft group of companies.</p>
+  </section>
+
+  <section id="tr" lang="tr">
+    <div class="glance">
+      <h2>Kısaca</h2>
+      <ul>
+        <li>Toplantıda transkripsiyon açık olmalı; açık değilse indirilecek bir şey yoktur.</li>
+        <li>En hızlı yol: Teams → Sohbet → geçmiş toplantı → Özet (Recap) → Transkript → İndir → <code>.docx</code> veya <code>.vtt</code>.</li>
+        <li>Transkripti okuyabiliyor ama İndir düğmesini göremiyorsan kaydı aç ve Transcript Saver ile TXT, Word veya SRT olarak kaydet.</li>
+      </ul>
+    </div>
+
+    <h2 class="part">Yöntem 1 · Özet (Recap) sekmesinden indirme</h2>
+    <div class="item">
+      <ol>
+        <li>Microsoft Teams'i aç ve <strong>Sohbet</strong>'i (veya <strong>Takvim</strong>'i) seç.</li>
+        <li>Geçmiş toplantının sohbetini ya da takvim etkinliğini aç.</li>
+        <li><strong>Özet (Recap)</strong> sekmesini, ardından <strong>Transkript</strong>'i seç.</li>
+        <li><strong>İndir</strong> yanındaki oka tıkla ve <code>.docx</code> ya da <code>.vtt</code>'yi seç.</li>
+      </ol>
+      <p class="muted">Mobilde: Sohbet → geçmiş toplantı sohbeti → Kayıtlar → Transkriptleri indir.</p>
+    </div>
+
+    <div class="note">
+      <strong>İndir düğmesi yok mu?</strong> Varsayılan olarak toplantı düzenleyicisi ve yardımcı düzenleyiciler transkripti indirebilir. Kurumdaki diğer kişiler çoğu zaman okuyabilir ama indiremez; kurum dışı konukların genelde erişimi yoktur. Bunu düzenleyici ve BT yöneticisi belirler. Özet sekmesi boşsa toplantı bittikten sonra birkaç dakika bekle.
+    </div>
+
+    <h2 class="part">Yöntem 2 · Kayıt sayfasından Transcript Saver ile kaydetme</h2>
+    <div class="item">
+      <p>Bir toplantı kaydını Microsoft Stream / SharePoint oynatıcısında açtığında transkript videonun yanındaki bir panelde görünür. Transcript Saver bu sayfaya küçük bir araç çubuğu ekler ve panelde görünen metni dosyaya çevirir.</p>
+      <ol>
+        <li>Chrome Web Store veya Microsoft Edge Add-ons'tan <strong>Transcript Saver</strong>'ı kur.</li>
+        <li>Toplantı kaydını aç (Özet'ten, sohbetten ya da paylaşılan bir bağlantıdan). Adres <code>…sharepoint.com/…/stream.aspx</code> gibi görünür.</li>
+        <li>Videonun yanındaki <strong>Transkript</strong> panelini aç.</li>
+        <li>Araç çubuğunda <strong>TXT</strong>, <strong>Word</strong>, <strong>SRT</strong> veya <strong>Kopyala</strong>'ya bas. Eklenti paneli kaydırır, metni okur ve dosyayı normal indirme klasörüne kaydeder.</li>
+      </ol>
+      <p class="muted">Eklenti sayfayı yalnızca bir düğmeye bastığında okur, sayfadan çıktığında hiçbir şey tutmaz ve hiçbir yere veri göndermez. <a href="../">Gizlilik politikasına</a> bak.</p>
+    </div>
+
+    <h2 class="part">Hangi formatı seçmeliyim?</h2>
+    <div class="item">
+      <table>
+        <thead><tr><th>Format</th><th>En uygun kullanım</th></tr></thead>
+        <tbody>
+          <tr><td><code>.docx</code> / Word</td><td>Okuma, düzenleme, toplantı notlarını paylaşma</td></tr>
+          <tr><td><code>.txt</code></td><td>Yapay zekâ asistanına, not uygulamalarına yapıştırma veya arama</td></tr>
+          <tr><td><code>.srt</code></td><td>Kayıt için yaygın video araçlarında altyazı</td></tr>
+          <tr><td><code>.vtt</code></td><td>Web videosu altyazısı; zaman damgaları ve konuşmacı etiketleri</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="part">Sorun giderme</h2>
+    <div class="item">
+      <ul>
+        <li><strong>Hiç transkript yok:</strong> toplantıda transkripsiyon başlatılmamış. Sonradan Teams'in kendisinden oluşturulamaz.</li>
+        <li><strong>Araç çubuğu görünmüyor:</strong> yalnızca kayıt oynatıcısı sayfalarında (<code>stream.aspx</code>) çıkar, Teams sohbet penceresinde çıkmaz. Kaydı Özet'ten aç ve sayfayı yenile.</li>
+        <li><strong>Dosya beklenenden kısa:</strong> transkript panelini açık tut ve sekme değiştirmeden önce eklentinin kaydırmayı bitirmesini bekle.</li>
+        <li><strong>Hassas toplantı:</strong> transkript ve kayıtları paylaşma konusunda kurumunun kurallarına uy.</li>
+      </ul>
+    </div>
+
+    <p class="muted">Transcript Saver bağımsız bir araçtır; Microsoft ile bağlantılı değildir, Microsoft tarafından desteklenmez veya onaylanmaz. Microsoft, Teams, SharePoint ve Stream, Microsoft şirketler grubunun ticari markalarıdır.</p>
+  </section>
+
+  <footer>
+    <span>Transcript Saver · Guide · Updated 31 October 2026</span>
+    <a href="../">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>
