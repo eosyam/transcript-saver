@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to turn a Microsoft Teams transcript into SRT subtitles · Transcript Saver</title>
+<meta name="description" content="Teams gives you transcripts as .vtt or .docx, but most video tools want .srt. Here is how I turn a Teams meeting transcript into SRT subtitles, by hand or in one click.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/">
+<link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/">
+<link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/tr/">
+<link rel="alternate" hreflang="x-default" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "How to turn a Microsoft Teams transcript into SRT subtitles",
+ "description": "Teams gives you transcripts as .vtt or .docx, but most video tools want .srt. Here is how I turn a Teams meeting transcript into SRT subtitles, by hand or in one click.",
+ "datePublished": "2026-11-04",
+ "dateModified": "2026-11-04",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Person",
+  "name": "Eray"
+ },
+ "mainEntityOfPage": "https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why does my video tool reject the Teams transcript file?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Teams exports WebVTT (.vtt), and many editors and learning platforms only accept SubRip (.srt). Convert the file or save it as SRT directly."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I get SRT if I wasn't the meeting organizer?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The Download button in Recap is usually limited to the organizer. If you can open the recording page and see the transcript, Transcript Saver can save it as SRT from there."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will the SRT include speaker names?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Transcript Saver writes the speaker name before each line, for example \"Ayşe Kaya: Let's start with the roadmap.\""
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it work for meetings that weren't transcribed?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Transcription has to be turned on during the meeting; there is nothing to convert otherwise."
+   }
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --fg: #1d1e2c; --muted: #5c5f78; --line: #dfe0ec;
+    --accent: #4f52b2; --accent-bg: #e9e9f8; --ok: #15803d; --ok-bg: #e8f5ec; --warn: #92400e; --warn-bg: #fdf3e3;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14151f; --surface: #1c1d2a; --fg: #e8e9f3; --muted: #a2a5bf; --line: #2e3044;
+      --accent: #9da0f0; --accent-bg: #26284a; --ok: #6fd394; --ok-bg: #16281e; --warn: #f0b866; --warn-bg: #2a2214; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.7 var(--font-body); padding: 40px 16px 64px; }
+  .wrap { max-width: 44rem; margin: 0 auto; display: grid; gap: 28px; }
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); line-height: 1.2; margin: 0; font-weight: 650; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  .glance { background: var(--ok-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+  .glance h2 { font-size: 15px; margin: 0; color: var(--ok); font-weight: 600; }
+  .note { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 16px; }
+  .note strong { color: var(--warn); }
+  ul, ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  section { display: grid; gap: 18px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 36px; }
+  h2 { font-size: 1.4rem; margin: 0; font-weight: 600; line-height: 1.3; }
+  h3 { font-size: 1.1rem; margin: 6px 0 -6px; font-weight: 600; }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  figure { margin: 4px 0; display: grid; gap: 8px; }
+  figure svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); display: block; }
+  figcaption { font-size: 13.5px; color: var(--muted); }
+  code { font: 400 0.88em var(--font-mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--surface); font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; }
+  .btn:hover, .btn:focus-visible { filter: brightness(1.1); outline: 2px solid var(--accent); outline-offset: 2px; }
+  .cta-end { background: var(--accent-bg); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 12px; }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDWP38S348"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QDWP38S348');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Transcript Saver · Guide</div>
+    <h1>How to turn a Microsoft Teams transcript into SRT subtitles</h1>
+    <p class="meta">Updated 4 November 2026 · SubRip (.srt) and WebVTT (.vtt) · <a href="tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+  </header>
+
+  <p>I record a meeting, want to put the video somewhere with subtitles, and hit the same wall every time: Teams hands me a <code>.vtt</code> file, but the video editor or LMS asks for <code>.srt</code>. The two formats are close cousins, so the fix is quick once you know the differences.</p>
+
+  <div class="glance">
+    <h2>The short version</h2>
+    <ul>
+      <li>Teams lets meeting organizers download the transcript as <code>.vtt</code> from Recap → Transcript → Download.</li>
+      <li>SRT is almost the same as VTT: numbered cues, a comma before the milliseconds, and no <code>WEBVTT</code> header.</li>
+      <li>If you can open the recording page but can't download, Transcript Saver saves an <code>.srt</code> straight from the transcript panel.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>What's the difference between VTT and SRT?</h2>
+    <table>
+      <thead><tr><th></th><th>WebVTT (.vtt)</th><th>SubRip (.srt)</th></tr></thead>
+      <tbody>
+        <tr><td>First line</td><td><code>WEBVTT</code></td><td>No header</td></tr>
+        <tr><td>Cue numbers</td><td>Optional</td><td>Required: 1, 2, 3…</td></tr>
+        <tr><td>Time format</td><td><code>00:01:02.500</code></td><td><code>00:01:02,500</code></td></tr>
+        <tr><td>Speaker names</td><td>Often as <code>&lt;v Name&gt;</code> tags</td><td>Plain text, e.g. <code>Name: …</code></td></tr>
+        <tr><td>Typical use</td><td>Web players, HTML5 video</td><td>Video editors, YouTube, most LMSs</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Method 1: Convert the Teams .vtt file yourself</h2>
+    <ol>
+      <li>Download the transcript as <code>.vtt</code> from the meeting's <strong>Recap → Transcript → Download</strong>. This works if you organized the meeting or were given permission.</li>
+      <li>Open the file in a plain text editor and delete the <code>WEBVTT</code> line at the top.</li>
+      <li>Replace the dot before the milliseconds with a comma in every time line (<code>00:00:05.120 --&gt; 00:00:08.400</code> becomes <code>00:00:05,120 --&gt; 00:00:08,400</code>). An editor with find and replace makes this one step.</li>
+      <li>Turn speaker tags like <code>&lt;v Ayşe Kaya&gt;</code> into plain text (<code>Ayşe Kaya: </code>) and remove the closing <code>&lt;/v&gt;</code>.</li>
+      <li>Number the cues 1, 2, 3… with a blank line between them, and save the file with a <code>.srt</code> extension.</li>
+    </ol>
+    <p class="muted">Free online VTT-to-SRT converters do steps 2–5 for you. Before you upload a work meeting to one, check your company's rules: the transcript leaves your computer.</p>
+  </section>
+
+  <section>
+    <h2>Method 2: Save SRT from the recording page with Transcript Saver</h2>
+    <p>This is what I use when there's no Download button for me, or I just don't want to edit timestamps by hand.</p>
+    <ol>
+      <li>Install <a href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-to-srt">Transcript Saver</a> in Chrome or Edge.</li>
+      <li>Open the meeting recording in the Stream / SharePoint player (the page ends in <code>stream.aspx</code>).</li>
+      <li>Open the <strong>Transcript</strong> panel next to the video.</li>
+      <li>Click <strong>SRT</strong> in the small Transcript Saver toolbar. The file lands in your downloads folder, with speaker names in front of each line.</li>
+    </ol>
+    <p>One honest note: the transcript panel only gives the moment each line starts. Transcript Saver lets each subtitle run until the next line begins, up to 15 seconds, so timings are close but not frame-perfect. For meeting recordings that is usually all you need.</p>
+  </section>
+
+  <section>
+    <h2>Questions people ask</h2>
+<h3>Why does my video tool reject the Teams transcript file?</h3>
+<p>Teams exports WebVTT (.vtt), and many editors and learning platforms only accept SubRip (.srt). Convert the file or save it as SRT directly.</p>
+<h3>Can I get SRT if I wasn't the meeting organizer?</h3>
+<p>The Download button in Recap is usually limited to the organizer. If you can open the recording page and see the transcript, Transcript Saver can save it as SRT from there.</p>
+<h3>Will the SRT include speaker names?</h3>
+<p>Yes. Transcript Saver writes the speaker name before each line, for example "Ayşe Kaya: Let's start with the roadmap."</p>
+<h3>Does it work for meetings that weren't transcribed?</h3>
+<p>No. Transcription has to be turned on during the meeting; there is nothing to convert otherwise.</p>
+  </section>
+
+  <div class="cta-end">
+    <strong>Need SRT subtitles from a Teams recording?</strong>
+    <p class="cta"><a class="btn" href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-to-srt" rel="noopener">Add Transcript Saver to Chrome</a></p>
+  </div>
+
+  <section>
+    <h2>More guides</h2>
+    <ul><li><a href="../how-to-download-teams-transcript/">How to download a Microsoft Teams transcript</a></li><li><a href="../teams-transcript-without-timestamps/">How to get a clean Teams transcript without timestamps</a></li></ul>
+  </section>
+
+  <p class="muted">Transcript Saver is an independent tool I make on my own. It is not affiliated with, sponsored or endorsed by Microsoft. Microsoft, Teams, SharePoint and Stream are trademarks of the Microsoft group of companies.</p>
+
+  <footer>
+    <span>Transcript Saver · Guide · Updated 4 November 2026</span>
+    <a href="../">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>
