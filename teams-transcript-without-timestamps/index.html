@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to get a clean Teams transcript without timestamps on every line · Transcript Saver</title>
+<meta name="description" content="The Teams transcript download puts a timestamp and a name on every short line. Here is how I turn it into clean, readable text for notes or for an AI summary.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/">
+<link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/">
+<link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/tr/">
+<link rel="alternate" hreflang="x-default" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "How to get a clean Teams transcript without timestamps on every line",
+ "description": "The Teams transcript download puts a timestamp and a name on every short line. Here is how I turn it into clean, readable text for notes or for an AI summary.",
+ "datePublished": "2026-11-04",
+ "dateModified": "2026-11-04",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Person",
+  "name": "Eray"
+ },
+ "mainEntityOfPage": "https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Can I download a Teams transcript without timestamps?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The built-in downloads always include timing. You can remove it with find and replace, or save a TXT with Transcript Saver, which keeps one time per speaker turn instead of one per line."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does the same speaker appear many times in a row?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Teams starts a new entry at every pause, like captions. Transcript Saver merges consecutive entries from the same speaker into one block."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the best format to paste into ChatGPT or Claude?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Plain text grouped by speaker. It is shorter than the raw transcript, so long meetings fit in one message more often."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it work if I can only view the recording?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "If you can open the recording page and see the transcript panel, Transcript Saver can save or copy it."
+   }
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --fg: #1d1e2c; --muted: #5c5f78; --line: #dfe0ec;
+    --accent: #4f52b2; --accent-bg: #e9e9f8; --ok: #15803d; --ok-bg: #e8f5ec; --warn: #92400e; --warn-bg: #fdf3e3;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14151f; --surface: #1c1d2a; --fg: #e8e9f3; --muted: #a2a5bf; --line: #2e3044;
+      --accent: #9da0f0; --accent-bg: #26284a; --ok: #6fd394; --ok-bg: #16281e; --warn: #f0b866; --warn-bg: #2a2214; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.7 var(--font-body); padding: 40px 16px 64px; }
+  .wrap { max-width: 44rem; margin: 0 auto; display: grid; gap: 28px; }
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); line-height: 1.2; margin: 0; font-weight: 650; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  .glance { background: var(--ok-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+  .glance h2 { font-size: 15px; margin: 0; color: var(--ok); font-weight: 600; }
+  .note { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 16px; }
+  .note strong { color: var(--warn); }
+  ul, ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  section { display: grid; gap: 18px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 36px; }
+  h2 { font-size: 1.4rem; margin: 0; font-weight: 600; line-height: 1.3; }
+  h3 { font-size: 1.1rem; margin: 6px 0 -6px; font-weight: 600; }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  figure { margin: 4px 0; display: grid; gap: 8px; }
+  figure svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); display: block; }
+  figcaption { font-size: 13.5px; color: var(--muted); }
+  code { font: 400 0.88em var(--font-mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--surface); font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; }
+  .btn:hover, .btn:focus-visible { filter: brightness(1.1); outline: 2px solid var(--accent); outline-offset: 2px; }
+  .cta-end { background: var(--accent-bg); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 12px; }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDWP38S348"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QDWP38S348');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Transcript Saver · Guide</div>
+    <h1>How to get a clean Teams transcript without timestamps on every line</h1>
+    <p class="meta">Updated 4 November 2026 · TXT, Word (.docx) · <a href="tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+  </header>
+
+  <p>A one-hour meeting turns into hundreds of tiny entries, each with a time and a name, and sometimes the same person appears ten times in a row. That's fine for a video player, but painful to read, to share as notes, or to paste into ChatGPT or Claude for a summary. Here's how I get a clean version.</p>
+
+  <div class="glance">
+    <h2>The short version</h2>
+    <ul>
+      <li>The built-in <code>.docx</code> and <code>.vtt</code> downloads keep timing on every entry. You can strip it with find and replace.</li>
+      <li>Transcript Saver's <strong>TXT</strong> groups consecutive lines from the same speaker into one block with a single time, which is much easier to read.</li>
+      <li>Its <strong>Copy</strong> button puts the clean text on your clipboard, ready to paste into an AI assistant.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>Why the Teams transcript looks so busy</h2>
+    <p>Teams writes the transcript the way captions work: a new entry every time someone pauses, each with its own speaker label and time. Even when one person talks for two minutes, you get many separate entries for them. Great for jumping to a moment in the video; not great for reading.</p>
+  </section>
+
+  <section>
+    <h2>Method 1: Clean the downloaded file yourself</h2>
+    <ol>
+      <li>Download the transcript from <strong>Recap → Transcript → Download</strong> (organizers, or people with permission).</li>
+      <li>Open the <code>.vtt</code> file in a text editor that supports regular expressions, such as VS Code or Notepad++.</li>
+      <li>Remove the time lines with find and replace, using this pattern and an empty replacement:
+        <br><code>^\d{2}:\d{2}:\d{2}\.\d{3} --&gt; .*$</code></li>
+      <li>Remove the <code>WEBVTT</code> header, and any cue ID lines above the times if your file has them.</li>
+      <li>Optionally merge repeated speaker names by hand, then save as <code>.txt</code>.</li>
+    </ol>
+    <p class="muted">In Word, the same idea works with Find and Replace and "Use wildcards", but VTT is simpler to clean because every time sits on its own line.</p>
+  </section>
+
+  <section>
+    <h2>Method 2: Save clean text with Transcript Saver</h2>
+    <ol>
+      <li>Install <a href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-without-timestamps">Transcript Saver</a> in Chrome or Edge.</li>
+      <li>Open the recording in the Stream / SharePoint player and open the <strong>Transcript</strong> panel.</li>
+      <li>Click <strong>TXT</strong> to download, or <strong>Copy</strong> to put the text on your clipboard.</li>
+    </ol>
+    <p>You get the meeting title at the top, then one block per speaker turn: the name, a single time, and everything they said until someone else spoke. For a one-hour meeting that usually cuts the length in half and reads like notes.</p>
+  </section>
+
+  <section>
+    <h2>Tip: summarizing with an AI assistant</h2>
+    <p>The grouped text is ideal for pasting into ChatGPT, Claude or Copilot. A prompt that works well for me:</p>
+    <p><code>Summarize this meeting transcript in 5 bullet points, then list decisions and action items with owners.</code></p>
+    <p class="muted">Check your company's policy before pasting meeting content into an external AI tool.</p>
+  </section>
+
+  <section>
+    <h2>Questions people ask</h2>
+<h3>Can I download a Teams transcript without timestamps?</h3>
+<p>The built-in downloads always include timing. You can remove it with find and replace, or save a TXT with Transcript Saver, which keeps one time per speaker turn instead of one per line.</p>
+<h3>Why does the same speaker appear many times in a row?</h3>
+<p>Teams starts a new entry at every pause, like captions. Transcript Saver merges consecutive entries from the same speaker into one block.</p>
+<h3>What is the best format to paste into ChatGPT or Claude?</h3>
+<p>Plain text grouped by speaker. It is shorter than the raw transcript, so long meetings fit in one message more often.</p>
+<h3>Does it work if I can only view the recording?</h3>
+<p>If you can open the recording page and see the transcript panel, Transcript Saver can save or copy it.</p>
+  </section>
+
+  <div class="cta-end">
+    <strong>Want clean meeting text in one click?</strong>
+    <p class="cta"><a class="btn" href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-without-timestamps" rel="noopener">Add Transcript Saver to Chrome</a></p>
+  </div>
+
+  <section>
+    <h2>More guides</h2>
+    <ul><li><a href="../how-to-download-teams-transcript/">How to download a Microsoft Teams transcript</a></li><li><a href="../teams-transcript-to-srt/">How to turn a Teams transcript into SRT subtitles</a></li></ul>
+  </section>
+
+  <p class="muted">Transcript Saver is an independent tool I make on my own. It is not affiliated with, sponsored or endorsed by Microsoft. Microsoft, Teams, SharePoint and Stream are trademarks of the Microsoft group of companies.</p>
+
+  <footer>
+    <span>Transcript Saver · Guide · Updated 4 November 2026</span>
+    <a href="../">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>

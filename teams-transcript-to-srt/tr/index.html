@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Microsoft Teams transkripti SRT altyazıya nasıl çevrilir · Transcript Saver</title>
+<meta name="description" content="Teams transkripti .vtt veya .docx olarak veriyor, çoğu video aracı ise .srt istiyor. Teams toplantı transkriptini elle ya da tek tıkla SRT altyazıya nasıl çevirdiğimi anlatıyorum.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/tr/">
+<link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/">
+<link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/tr/">
+<link rel="alternate" hreflang="x-default" href="https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Microsoft Teams transkripti SRT altyazıya nasıl çevrilir",
+ "description": "Teams transkripti .vtt veya .docx olarak veriyor, çoğu video aracı ise .srt istiyor. Teams toplantı transkriptini elle ya da tek tıkla SRT altyazıya nasıl çevirdiğimi anlatıyorum.",
+ "datePublished": "2026-11-04",
+ "dateModified": "2026-11-04",
+ "inLanguage": "tr",
+ "author": {
+  "@type": "Person",
+  "name": "Eray"
+ },
+ "mainEntityOfPage": "https://eosyam.github.io/transcript-saver/teams-transcript-to-srt/tr/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Video aracım Teams transkript dosyasını neden kabul etmiyor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Teams WebVTT (.vtt) verir; birçok düzenleyici ve eğitim platformu yalnızca SubRip (.srt) kabul eder. Dosyayı çevir ya da doğrudan SRT olarak kaydet."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Toplantı düzenleyicisi değilsem SRT alabilir miyim?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Özet'teki İndir düğmesi genelde düzenleyiciyle sınırlıdır. Kayıt sayfasını açıp transkripti görebiliyorsan Transcript Saver oradan SRT olarak kaydedebilir."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "SRT'de konuşmacı adları olacak mı?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Evet. Transcript Saver her satırın önüne konuşmacının adını yazar, örneğin \"Ayşe Kaya: Yol haritasıyla başlayalım.\""
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Transkripti açılmamış toplantılarda çalışır mı?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Hayır. Transkript toplantı sırasında açılmış olmalı; yoksa çevrilecek bir şey yoktur."
+   }
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --fg: #1d1e2c; --muted: #5c5f78; --line: #dfe0ec;
+    --accent: #4f52b2; --accent-bg: #e9e9f8; --ok: #15803d; --ok-bg: #e8f5ec; --warn: #92400e; --warn-bg: #fdf3e3;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14151f; --surface: #1c1d2a; --fg: #e8e9f3; --muted: #a2a5bf; --line: #2e3044;
+      --accent: #9da0f0; --accent-bg: #26284a; --ok: #6fd394; --ok-bg: #16281e; --warn: #f0b866; --warn-bg: #2a2214; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.7 var(--font-body); padding: 40px 16px 64px; }
+  .wrap { max-width: 44rem; margin: 0 auto; display: grid; gap: 28px; }
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); line-height: 1.2; margin: 0; font-weight: 650; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  .glance { background: var(--ok-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+  .glance h2 { font-size: 15px; margin: 0; color: var(--ok); font-weight: 600; }
+  .note { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 16px; }
+  .note strong { color: var(--warn); }
+  ul, ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  section { display: grid; gap: 18px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 36px; }
+  h2 { font-size: 1.4rem; margin: 0; font-weight: 600; line-height: 1.3; }
+  h3 { font-size: 1.1rem; margin: 6px 0 -6px; font-weight: 600; }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  figure { margin: 4px 0; display: grid; gap: 8px; }
+  figure svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); display: block; }
+  figcaption { font-size: 13.5px; color: var(--muted); }
+  code { font: 400 0.88em var(--font-mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--surface); font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; }
+  .btn:hover, .btn:focus-visible { filter: brightness(1.1); outline: 2px solid var(--accent); outline-offset: 2px; }
+  .cta-end { background: var(--accent-bg); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 12px; }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDWP38S348"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QDWP38S348');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Transcript Saver · Rehber</div>
+    <h1>Microsoft Teams transkripti SRT altyazıya nasıl çevrilir</h1>
+    <p class="meta">Güncelleme: 4 Kasım 2026 · SubRip (.srt) ve WebVTT (.vtt) · <a href="../" hreflang="en" lang="en">English</a></p>
+  </header>
+
+  <p>Bir toplantıyı kaydediyorum, videoyu altyazılı paylaşmak istiyorum ve her seferinde aynı duvara çarpıyorum: Teams bana <code>.vtt</code> dosyası veriyor, video düzenleyici ya da eğitim platformu ise <code>.srt</code> istiyor. İki format çok benzer; farkları bilince çözüm birkaç dakika.</p>
+
+  <div class="glance">
+    <h2>Kısaca</h2>
+    <ul>
+      <li>Teams, toplantı düzenleyicisinin transkripti Özet (Recap) → Transkript → İndir yolundan <code>.vtt</code> olarak indirmesine izin verir.</li>
+      <li>SRT neredeyse VTT ile aynıdır: numaralı satırlar, milisaniyeden önce virgül ve <code>WEBVTT</code> başlığı yok.</li>
+      <li>Kayıt sayfasını açabiliyor ama indiremiyorsan, Transcript Saver <code>.srt</code> dosyasını doğrudan transkript panelinden kaydeder.</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>VTT ile SRT arasındaki fark ne?</h2>
+    <table>
+      <thead><tr><th></th><th>WebVTT (.vtt)</th><th>SubRip (.srt)</th></tr></thead>
+      <tbody>
+        <tr><td>İlk satır</td><td><code>WEBVTT</code></td><td>Başlık yok</td></tr>
+        <tr><td>Satır numaraları</td><td>İsteğe bağlı</td><td>Zorunlu: 1, 2, 3…</td></tr>
+        <tr><td>Zaman biçimi</td><td><code>00:01:02.500</code></td><td><code>00:01:02,500</code></td></tr>
+        <tr><td>Konuşmacı adları</td><td>Genelde <code>&lt;v Ad&gt;</code> etiketiyle</td><td>Düz metin, ör. <code>Ad: …</code></td></tr>
+        <tr><td>Nerede kullanılır</td><td>Web oynatıcılar, HTML5 video</td><td>Video düzenleyiciler, YouTube, çoğu eğitim platformu</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Yöntem 1: Teams'in .vtt dosyasını kendin çevir</h2>
+    <ol>
+      <li>Transkripti toplantının <strong>Özet → Transkript → İndir</strong> menüsünden <code>.vtt</code> olarak indir. Toplantıyı sen düzenlediysen ya da izin verildiyse çalışır.</li>
+      <li>Dosyayı düz metin düzenleyicide aç ve en üstteki <code>WEBVTT</code> satırını sil.</li>
+      <li>Her zaman satırında milisaniyeden önceki noktayı virgül yap (<code>00:00:05.120 --&gt; 00:00:08.400</code>, <code>00:00:05,120 --&gt; 00:00:08,400</code> olur). Bul ve değiştir özelliği bunu tek adımda yapar.</li>
+      <li><code>&lt;v Ayşe Kaya&gt;</code> gibi konuşmacı etiketlerini düz metne çevir (<code>Ayşe Kaya: </code>) ve kapanış etiketi <code>&lt;/v&gt;</code>'yi sil.</li>
+      <li>Satırları aralarında boş satır bırakarak 1, 2, 3… diye numaralandır ve dosyayı <code>.srt</code> uzantısıyla kaydet.</li>
+    </ol>
+    <p class="muted">Ücretsiz çevrimiçi VTT→SRT dönüştürücüler 2–5. adımları senin yerine yapar. İş toplantısını yüklemeden önce şirket kurallarına bak: transkript bilgisayarından çıkar.</p>
+  </section>
+
+  <section>
+    <h2>Yöntem 2: Transcript Saver ile kayıt sayfasından SRT kaydet</h2>
+    <p>İndir düğmesi bende yoksa ya da zaman damgalarıyla uğraşmak istemiyorsam bunu kullanıyorum.</p>
+    <ol>
+      <li><a href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-to-srt">Transcript Saver</a>'ı Chrome ya da Edge'e kur.</li>
+      <li>Toplantı kaydını Stream / SharePoint oynatıcısında aç (adres <code>stream.aspx</code> ile biter).</li>
+      <li>Videonun yanındaki <strong>Transkript</strong> panelini aç.</li>
+      <li>Küçük Transcript Saver araç çubuğunda <strong>SRT</strong>'ye bas. Dosya, her satırın başında konuşmacı adıyla indirilenler klasörüne iner.</li>
+    </ol>
+    <p>Dürüst bir not: transkript paneli yalnızca her satırın başladığı anı verir. Transcript Saver her altyazıyı bir sonraki satır başlayana kadar, en fazla 15 saniye gösterir; yani zamanlama yakın ama kare kare değil. Toplantı kayıtları için genelde bu yeterli.</p>
+  </section>
+
+  <section>
+    <h2>Sık sorulanlar</h2>
+<h3>Video aracım Teams transkript dosyasını neden kabul etmiyor?</h3>
+<p>Teams WebVTT (.vtt) verir; birçok düzenleyici ve eğitim platformu yalnızca SubRip (.srt) kabul eder. Dosyayı çevir ya da doğrudan SRT olarak kaydet.</p>
+<h3>Toplantı düzenleyicisi değilsem SRT alabilir miyim?</h3>
+<p>Özet'teki İndir düğmesi genelde düzenleyiciyle sınırlıdır. Kayıt sayfasını açıp transkripti görebiliyorsan Transcript Saver oradan SRT olarak kaydedebilir.</p>
+<h3>SRT'de konuşmacı adları olacak mı?</h3>
+<p>Evet. Transcript Saver her satırın önüne konuşmacının adını yazar, örneğin "Ayşe Kaya: Yol haritasıyla başlayalım."</p>
+<h3>Transkripti açılmamış toplantılarda çalışır mı?</h3>
+<p>Hayır. Transkript toplantı sırasında açılmış olmalı; yoksa çevrilecek bir şey yoktur.</p>
+  </section>
+
+  <div class="cta-end">
+    <strong>Teams kaydından SRT altyazı mı lazım?</strong>
+    <p class="cta"><a class="btn" href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=guide&amp;utm_medium=referral&amp;utm_campaign=teams-transcript-to-srt" rel="noopener">Transcript Saver'ı Chrome'a ekle</a></p>
+  </div>
+
+  <section>
+    <h2>Diğer rehberler</h2>
+    <ul><li><a href="../../how-to-download-teams-transcript/tr/">Microsoft Teams transkripti nasıl indirilir</a></li><li><a href="../../teams-transcript-without-timestamps/tr/">Zaman damgası olmadan temiz Teams transkripti</a></li></ul>
+  </section>
+
+  <p class="muted">Transcript Saver, kendi başıma geliştirdiğim bağımsız bir araçtır. Microsoft ile bağlantılı değildir, Microsoft tarafından desteklenmez veya onaylanmaz. Microsoft, Teams, SharePoint ve Stream, Microsoft şirketler grubunun ticari markalarıdır.</p>
+
+  <footer>
+    <span>Transcript Saver · Rehber · Güncelleme: 4 Kasım 2026</span>
+    <a href="../../">Gizlilik Politikası</a>
+  </footer>
+</div>
+</body>
+</html>
