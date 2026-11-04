@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transcript Saver guides · Transcript Saver</title>
+<meta name="description" content="Guides to downloading Microsoft Teams meeting transcripts, turning them into SRT subtitles and clean text.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://eosyam.github.io/transcript-saver/blog/">
+<link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/blog/">
+<link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/blog/tr/">
+<link rel="alternate" hreflang="x-default" href="https://eosyam.github.io/transcript-saver/blog/">
+<style>
+  :root {
+    --bg: #f7f7fb; --surface: #ffffff; --fg: #1d1e2c; --muted: #5c5f78; --line: #dfe0ec;
+    --accent: #4f52b2; --accent-bg: #e9e9f8; --ok: #15803d; --ok-bg: #e8f5ec; --warn: #92400e; --warn-bg: #fdf3e3;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14151f; --surface: #1c1d2a; --fg: #e8e9f3; --muted: #a2a5bf; --line: #2e3044;
+      --accent: #9da0f0; --accent-bg: #26284a; --ok: #6fd394; --ok-bg: #16281e; --warn: #f0b866; --warn-bg: #2a2214; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.7 var(--font-body); padding: 40px 16px 64px; }
+  .wrap { max-width: 44rem; margin: 0 auto; display: grid; gap: 28px; }
+  header { display: grid; gap: 10px; }
+  .eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(1.75rem, 4vw, 2.35rem); line-height: 1.2; margin: 0; font-weight: 650; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  .glance { background: var(--ok-bg); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+  .glance h2 { font-size: 15px; margin: 0; color: var(--ok); font-weight: 600; }
+  .note { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; font-size: 16px; }
+  .note strong { color: var(--warn); }
+  ul, ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  section { display: grid; gap: 18px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 36px; }
+  h2 { font-size: 1.4rem; margin: 0; font-weight: 600; line-height: 1.3; }
+  h3 { font-size: 1.1rem; margin: 6px 0 -6px; font-weight: 600; }
+  p { margin: 0; }
+  .muted { color: var(--muted); }
+  figure { margin: 4px 0; display: grid; gap: 8px; }
+  figure svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); display: block; }
+  figcaption { font-size: 13.5px; color: var(--muted); }
+  code { font: 400 0.88em var(--font-mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-weight: 600; font-size: 13px; color: var(--muted); }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--surface); font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; }
+  .btn:hover, .btn:focus-visible { filter: brightness(1.1); outline: 2px solid var(--accent); outline-offset: 2px; }
+  .cta-end { background: var(--accent-bg); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 12px; }
+  footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; }
+</style>
+<style>
+  .post { display: grid; gap: 6px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .post h2 { font-size: 1.2rem; }
+  .post h2 a { color: var(--fg); text-decoration: none; }
+  .post h2 a:hover { color: var(--accent); }
+  .post p { color: var(--muted); }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QDWP38S348"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QDWP38S348');
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Transcript Saver · Blog</div>
+    <h1>Guides</h1>
+    <p class="meta">Guides to downloading Microsoft Teams meeting transcripts, turning them into SRT subtitles and clean text. · <a href="tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+  </header>
+  <section style="gap:0">
+    <article class="post">
+      <h2><a href="../teams-transcript-without-timestamps/">How to get a clean Teams transcript without timestamps on every line</a></h2>
+      <p>Turn the busy Teams transcript into readable text for notes or an AI summary.</p>
+      <p class="meta">4 November 2026</p>
+    </article>
+    <article class="post">
+      <h2><a href="../teams-transcript-to-srt/">How to turn a Microsoft Teams transcript into SRT subtitles</a></h2>
+      <p>Teams gives you .vtt or .docx, video tools want .srt. The differences, a manual conversion and a one-click way.</p>
+      <p class="meta">4 November 2026</p>
+    </article>
+    <article class="post">
+      <h2><a href="../how-to-download-teams-transcript/">How to download a Microsoft Teams transcript</a></h2>
+      <p>The two ways to get a Teams meeting transcript: the Recap tab, and the recording page when there is no Download button.</p>
+      <p class="meta">31 October 2026</p>
+    </article>
+  </section>
+  <div class="cta-end">
+    <strong>Save Teams transcripts as TXT, Word or SRT in one click.</strong>
+    <p class="cta"><a class="btn" href="https://chromewebstore.google.com/detail/inbgpffmjeipkhmbiihfbgfkdniccoln?utm_source=blog&amp;utm_medium=referral&amp;utm_campaign=blog-index" rel="noopener">Add Transcript Saver to Chrome</a></p>
+  </div>
+  <footer>
+    <span>Transcript Saver · Guides</span>
+    <a href="../">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>

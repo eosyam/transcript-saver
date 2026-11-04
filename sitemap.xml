@@ -40,4 +40,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/teams-transcript-without-timestamps/tr/"/>
   </url>
+  <url>
+    <loc>https://eosyam.github.io/transcript-saver/blog/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/blog/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/blog/tr/"/>
+  </url>
+  <url>
+    <loc>https://eosyam.github.io/transcript-saver/blog/tr/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eosyam.github.io/transcript-saver/blog/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://eosyam.github.io/transcript-saver/blog/tr/"/>
+  </url>
 </urlset>
